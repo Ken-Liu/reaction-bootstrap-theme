@@ -1,7 +1,7 @@
 Package.describe({
   summary: "Reaction Commerce Bootstrap theme builder",
   name: "reactioncommerce:bootstrap-theme",
-  version: "1.0.0",
+  version: "1.1.0",
   git: "https://github.com/reactioncommerce/reaction-bootstrap-theme.git"
 });
 
@@ -24,4 +24,5 @@ Package.onUse(function (api) {
   //core meteor packages
   api.use("meteor-platform");
   api.use("reactioncommerce:core-theme");
+  api.use("fortawesome:fontawesome@4.3.0");
 });
