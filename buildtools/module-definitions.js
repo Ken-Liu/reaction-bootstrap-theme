@@ -1,0 +1,42 @@
+moduleDefinitions = {
+  "variables":{less:["default/variables.less"]},
+  "mixins":{less:["default/mixins.less", "default/bootstrap.rtl.less"]},
+  "accounts":{less:["theme/accounts/accounts.less","theme/accounts/inline/inline.less"]},
+  "cart":{less:[
+    'theme/cart/cartDrawer/cartDrawer.less',
+    'theme/cart/cartDrawer/cartItems/cartItems.less',
+    'theme/cart/cartDrawer/cartSubTotals/cartSubTotals.less',
+    'theme/cart/cartIcon/cartIcon.less',
+    'theme/cart/checkout/addressBook/addressBook.less',
+    'theme/cart/checkout/checkout.less',
+    'theme/cart/checkout/progressBar/progressBar.less',
+    ]},
+    "dashboard":{less:[
+    'theme/dashboard/dashboard.less',
+    'theme/dashboard/console/console.less',
+    'theme/dashboard/orders/orders.less',
+    'theme/dashboard/packages/grid/package/package.less',
+    'theme/dashboard/shop/accounts.less',
+    'theme/dashboard/shop/settings.less',
+    'theme/dashboard/widget/widget.less'
+    ]},
+    "layout":{less:[
+      'theme/layout/footer/footer.less',
+      'theme/layout/header/header.less',
+      'theme/layout/header/tags/tags.less'
+    ]},
+    "products":{less:[
+      'theme/products/productDetail/attributes/attributes.less',
+      'theme/products/productDetail/images/productImageGallery.less',
+      'theme/products/productDetail/productDetail.less',
+      'theme/products/productDetail/tags/tags.less',
+      'theme/products/productDetail/variants/variant.less',
+      'theme/products/productDetail/variants/variantForm/childVariant/childVariant.less',
+      'theme/products/productDetail/variants/variantForm/variantForm.less',
+      'theme/products/productDetail/variants/variantList/variantList.less',
+      'theme/products/productGrid/productGrid.less',
+      'theme/products/productList/productList.less',
+      'theme/products/products.less'
+    ]}
+
+};
