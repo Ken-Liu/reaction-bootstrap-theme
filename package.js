@@ -8,7 +8,7 @@ Package.describe({
 Package.registerBuildPlugin({
   name: 'theme-configurator',
   use: [
-    'underscore',
+    'underscore@1.0.3',
     'reactioncommerce:core-theme@1.4.1'
   ],
   sources: [
