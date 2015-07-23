@@ -2,6 +2,10 @@ moduleDefinitions = {
   "variables":{less:["default/variables.less"]},
   "mixins":{less:["default/mixins.less", "default/bootstrap.rtl.less"]},
   "accounts":{less:["theme/accounts/accounts.less","theme/accounts/inline/inline.less"]},
+  "core":{less:[
+    'default/popovers.less',
+    'default/grid.less'
+  ]},
   "cart":{less:[
     'theme/cart/cartDrawer/cartDrawer.less',
     'theme/cart/cartDrawer/cartItems/cartItems.less',
@@ -21,6 +25,7 @@ moduleDefinitions = {
     'theme/dashboard/widget/widget.less'
     ]},
     "layout":{less:[
+      'theme/layout/layout.less',
       'theme/layout/footer/footer.less',
       'theme/layout/header/header.less',
       'theme/layout/header/tags/tags.less'
@@ -40,3 +45,4 @@ moduleDefinitions = {
     ]}
 
 };
+
