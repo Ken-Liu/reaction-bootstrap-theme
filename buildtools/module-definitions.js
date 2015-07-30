@@ -4,7 +4,8 @@ moduleDefinitions = {
   "accounts":{less:["theme/accounts/accounts.less","theme/accounts/inline/inline.less"]},
   "core":{less:[
     'default/popovers.less',
-    'default/grid.less'
+    'default/grid.less',
+    'default/panels.less'
   ]},
   "cart":{less:[
     'theme/cart/cartDrawer/cartDrawer.less',
