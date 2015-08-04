@@ -1,7 +1,7 @@
 Package.describe({
   summary: "Reaction Commerce Bootstrap theme builder",
   name: "reactioncommerce:bootstrap-theme",
-  version: "1.2.0",
+  version: "1.4.0",
   git: "https://github.com/reactioncommerce/reaction-bootstrap-theme.git"
 });
 
