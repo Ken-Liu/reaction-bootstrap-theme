@@ -113,8 +113,8 @@ var handler = function (compileStep, isLiterate) {
   var variablesLessFile = jsonPath.replace(/json$/i, 'variables.import.less')
 
   // User editable files
-  var userImportsLessFile = jsonPath.replace(/json$/i, 'user-imports.less');
-  var userOverridesLessFile = jsonPath.replace(/json$/i, 'user-overrides.less');
+  var userImportsLessFile = jsonPath.replace(/json$/i, 'import.less');
+  var userOverridesLessFile = jsonPath.replace(/json$/i, 'overrides.import.less');
 
   // Final output
   var outputLessFile = jsonPath.replace(/json$/i, 'less');
