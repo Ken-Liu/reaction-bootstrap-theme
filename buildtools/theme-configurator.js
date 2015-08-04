@@ -1,7 +1,13 @@
+// =============================================================================
+// Build LESS files
 // Originally source from https://github.com/Nemo64/meteor-bootstrap
+
 var fs   = Npm.require('fs');
 var path = Npm.require('path');
 
+// -----------------------------------------------------------------------------
+// Helpers
+//
 var createLessFile = function (path, content) {
   fs.writeFileSync(path, content.join('\n'), { encoding: 'utf8' });
 };
@@ -18,6 +24,11 @@ var getLessContent = function (filename) {
   });
 };
 
+
+
+// -----------------------------------------------------------------------------
+// Build Handler
+//
 var handler = function (compileStep, isLiterate) {
   var jsonPath = compileStep._fullInputPath;
 
@@ -89,14 +100,30 @@ var handler = function (compileStep, isLiterate) {
     });
   }
 
-  // filenames
+
+  // **************************************************************************
+  // Filenames for the various less files that are added into 
+  // reaction/client/themes/bootstrap
+  // 
+
+  // Our imports
+  // -- these end up in the user editable less file
+  var bootstrapLessFile = jsonPath.replace(/json$/i, 'bootstrap.less');
   var mixinsLessFile = jsonPath.replace(/json$/i, 'mixins.import.less')
   var variablesLessFile = jsonPath.replace(/json$/i, 'variables.import.less')
-  var importLessFile = jsonPath.replace(/json$/i, 'import.less');
-  var bootStrapLessFile = jsonPath.replace(/json$/i, 'bootstrap.less');
-  var overridesLessFile = jsonPath.replace(/json$/i, 'import.less');
+
+  // User editable files
+  var userImportsLessFile = jsonPath.replace(/json$/i, 'user-imports.less');
+  var userOverridesLessFile = jsonPath.replace(/json$/i, 'user-overrides.less');
+
+  // Final output
   var outputLessFile = jsonPath.replace(/json$/i, 'less');
 
+
+
+  // **************************************************************************
+  // Mixins
+  //
   createLessFile(mixinsLessFile, [
     "// ************************************************",
     "// THIS FILE IS GENERATED, DO NOT MODIFY IT!",
@@ -104,10 +131,14 @@ var handler = function (compileStep, isLiterate) {
     "//",
     "// These are the mixins Reaction provides",
     "// They are included here so you can use them in your less files too,",
-    "// However: you should @import \"" + path.basename(importLessFile) + "\" instead of this",
+    "// However: you should @import \"" + path.basename(userImportsLessFile) + "\" instead of this",
     getLessContent('default/mixins.less')
   ]);
 
+
+  // **************************************************************************
+  // Variables
+  //
   createLessFile(variablesLessFile, [
     "// ************************************************",
     "// THIS FILE IS GENERATED, DO NOT MODIFY IT!",
@@ -119,9 +150,14 @@ var handler = function (compileStep, isLiterate) {
     getLessContent('default/variables.less')
   ]);
 
-  // create the file that can be modified
-  if (! fs.existsSync(overridesLessFile)) {
-    createLessFile(overridesLessFile, [
+
+
+  // **************************************************************************
+  // User editable import file (loaded first)
+  // -- Best used for modyfing variables and mixins
+  //
+  if (! fs.existsSync(userImportsLessFile)) {
+    createLessFile(userImportsLessFile, [
       "// ************************************************",
       "// THIS FILE IS FOR YOU TO MODIFY REACTION THEMING!",
       "// ************************************************",
@@ -140,9 +176,35 @@ var handler = function (compileStep, isLiterate) {
     ]);
   }
 
-  // create the file that finally includes bootstrap
+
+  // **************************************************************************
+  // User editable overrides file (loaded last)
+  // -- Best used for overriding CSS
+  //
+  if (! fs.existsSync(userOverridesLessFile)) {
+    createLessFile(userOverridesLessFile, [
+      "// ************************************************",
+      "// THIS FILE IS FOR YOU TO MODIFY REACTION THEMING!",
+      "// ************************************************",
+      "//",
+      "// It won't be overwritten as long as it exists.",
+      '//',
+      '// This file is the last import after all base reaction',
+      '// variables, styles, and mixins.',
+      '//',
+      '// If you want to override variables or add custom styles to the top,',
+      "// see '" + path.basename(userImportsLessFile) + "'",
+      '',
+      ''
+    ]);
+  }
+
+
+  // **************************************************************************
+  // Create a file that brings everything together
+  //
   var bootstrapContent = [
-  "// ************************************************",
+    "// ************************************************",
     "// THIS FILE IS GENERATED, DO NOT MODIFY IT!",
     "// ************************************************",
     "//",
@@ -152,12 +214,32 @@ var handler = function (compileStep, isLiterate) {
     "// If it throws errors your bootstrap.import.less is probably invalid.",
     "// To fix that remove that file and then recover your changes.",
     '',
-    '@import "' + path.basename(importLessFile) + '";'
+    '@import "' + path.basename(userImportsLessFile) + '";'
   ];
+  
+  // add all of our LESS files into this one file
   _.each(less, function (lessPath) {
     bootstrapContent.push(getLessContent('' + lessPath));
   });
-  createLessFile(outputLessFile, bootstrapContent);
+
+  // Add the final import for user overrides
+  var bootstrapContentEnd = [
+    "// ************************************************",
+    "// ADD ANY CUSTOM CSS INTO THE FOLLOWING FILE",
+    "// ************************************************",
+    "//",
+    "// If you need to add your own custom styling, please add it to",
+    "// the following file '" + path.basename(userOverridesLessFile) + "'",
+    '//',
+    "// Alternatively, you may the file '" + path.basename(userImportsLessFile) + "'",
+    '// to override any variables or mixins globally.',
+    '',
+    '',
+    '@import "' + path.basename(userOverridesLessFile) + '";'
+  ];
+
+  // -- Finally, create the file.
+  createLessFile(outputLessFile, bootstrapContent.concat(bootstrapContentEnd));
 };
 
 Plugin.registerSourceHandler('reaction.json', {archMatching: 'web'}, handler);
