@@ -5,7 +5,8 @@ moduleDefinitions = {
   "core":{less:[
     'default/popovers.less',
     'default/grid.less',
-    'default/panels.less'
+    'default/panels.less',
+    'default/dropdowns.less',
   ]},
   "cart":{less:[
     'theme/cart/cartDrawer/cartDrawer.less',
