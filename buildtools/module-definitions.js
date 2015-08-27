@@ -8,6 +8,7 @@ moduleDefinitions = {
     'default/panels.less',
     'default/dropdowns.less',
     'default/navs.less',
+    'default/alerts.less',
   ]},
   "cart":{less:[
     'theme/cart/cartDrawer/cartDrawer.less',
