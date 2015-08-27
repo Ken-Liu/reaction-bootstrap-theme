@@ -7,6 +7,7 @@ moduleDefinitions = {
     'default/grid.less',
     'default/panels.less',
     'default/dropdowns.less',
+    'default/navs.less',
   ]},
   "cart":{less:[
     'theme/cart/cartDrawer/cartDrawer.less',
