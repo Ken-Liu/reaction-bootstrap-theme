@@ -10,6 +10,7 @@ moduleDefinitions = {
     'default/dropdowns.less',
     'default/navs.less',
     'default/alerts.less',
+    'default/forms.less'
   ]},
   "cart":{less:[
     'theme/cart/cartDrawer/cartDrawer.less',
