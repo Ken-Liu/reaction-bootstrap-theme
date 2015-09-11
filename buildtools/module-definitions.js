@@ -3,8 +3,14 @@ moduleDefinitions = {
   "mixins":{less:["default/mixins.less", "default/bootstrap.rtl.less"]},
   "accounts":{less:["theme/accounts/accounts.less","theme/accounts/inline/inline.less"]},
   "core":{less:[
+    'default/mixins/lesshat.less',
     'default/popovers.less',
-    'default/grid.less'
+    'default/grid.less',
+    'default/panels.less',
+    'default/dropdowns.less',
+    'default/navs.less',
+    'default/alerts.less',
+    'default/forms.less'
   ]},
   "cart":{less:[
     'theme/cart/cartDrawer/cartDrawer.less',
