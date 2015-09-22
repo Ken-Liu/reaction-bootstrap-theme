@@ -9,7 +9,7 @@ Package.registerBuildPlugin({
   name: 'theme-configurator',
   use: [
     'underscore@1.0.3',
-    'reactioncommerce:core-theme@1.6.0'
+    'reactioncommerce:core-theme@1.7.0'
   ],
   sources: [
     'buildtools/module-definitions.js',
@@ -20,7 +20,7 @@ Package.registerBuildPlugin({
 });
 
 Package.onUse(function (api) {
-  api.versionsFrom('METEOR@1.0');
+  api.versionsFrom('METEOR@1.2');
   //core meteor packages
   api.use("meteor-platform");
   api.use("reactioncommerce:core-theme");
