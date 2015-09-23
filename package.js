@@ -8,7 +8,7 @@ Package.describe({
 Package.registerBuildPlugin({
   name: 'theme-configurator',
   use: [
-    'underscore@1.0.3',
+    'underscore@1.0.4',
     'reactioncommerce:core-theme@1.7.0'
   ],
   sources: [
@@ -21,8 +21,14 @@ Package.registerBuildPlugin({
 
 Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.2');
-  //core meteor packages
-  api.use("meteor-platform");
+  // meteor base packages
+  api.use("standard-minifiers");
+  api.use("meteor-base");
+
+  // meteor add-on packages
+
+  api.use("less");
+
   api.use("reactioncommerce:core-theme");
   api.use("fortawesome:fontawesome@4.4.0");
 });
