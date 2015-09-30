@@ -1,4 +1,5 @@
-Reaction Commerce Bootstrap Theme
+# Reaction Bootstrap Theme
+Provides Reaction Bootstrap theme with custom mixins.
 
 `meteor add reactioncommerce:bootstrap-theme`
 
