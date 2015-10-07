@@ -1,7 +1,7 @@
 Package.describe({
   summary: "Reaction Commerce Bootstrap theme builder",
   name: "reactioncommerce:bootstrap-theme",
-  version: "1.6.0",
+  version: "1.7.0",
   git: "https://github.com/reactioncommerce/reaction-bootstrap-theme.git"
 });
 
@@ -9,7 +9,7 @@ Package.registerBuildPlugin({
   name: 'theme-configurator',
   use: [
     'underscore@1.0.4',
-    'reactioncommerce:core-theme@1.7.0'
+    'reactioncommerce:core-theme@1.8.0'
   ],
   sources: [
     'buildtools/module-definitions.js',
